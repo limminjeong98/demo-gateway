@@ -1,0 +1,8 @@
+### PAYMENT 서비스
+GET http://localhost:8080/payments/1
+
+### BOOK 서비스
+GET http://localhost:8080/books/1
+
+###
+GET http://localhost:8080/fastcampus/search/recommended
