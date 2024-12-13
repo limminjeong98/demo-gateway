@@ -14,3 +14,5 @@ eureka:
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
     region: default
+  server:
+    renewal-percent-threshold: 0 # ? ?? ?? ?? heartbeat? ????? ??
