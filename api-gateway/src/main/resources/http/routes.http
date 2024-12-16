@@ -24,8 +24,9 @@ Content-Type: application/json
 GET http://localhost:8080/payments/1
 Authorization: Bearer {{authToken}}
 
-### BOOK 서비스
-GET http://localhost:8080/books/1
+### BOOK 서비스 (with userId QueryParams)
+GET http://localhost:8080/books/1?userId=admin
+Authorization: Bearer {{authToken}}
 
 ###
 GET http://localhost:8080/fastcampus/search/recommended

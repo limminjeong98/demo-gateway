@@ -8,7 +8,7 @@ spring:
           uri: lb://payment-api # http://localhost:9002
           order: 1
           predicates:
-            - Path=/payments/** # ?? ??? ?? ??? ??
+            - Path=/payments/** # 특정 경로로 오는 요청을 처리
           filters:
             - RewritePath=/payments/(?<segment>.*),/v1/payments/$\{segment}
         - id: book-api
@@ -17,6 +17,12 @@ spring:
           predicates:
             - Path=/books/**
           filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1 # replenishRate는 사용자가 일정시간동안(보통 초 단위) 발생시킬 수 있는 요청의 수를 정의
+                redis-rate-limiter.burstCapacity: 1 # burstCapacity는 토큰버킷이 담을 수 있는 최대 토큰의 수를 정의
+                key-resolver: "#{@userIdQueryParamKeyResolver}"
+                # key-resolver: "#{@ipKeyResolver}"
             - RewritePath=/books/(?<segment>.*),/v1/books/$\{segment}
 
 eureka:
