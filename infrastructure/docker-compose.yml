@@ -6,6 +6,13 @@ services:
     volumes:
       - redis-data:/data
     command: redis-server --appendonly yes
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin-slim:${TAG:-latest}
+    container_name: zipkin
+    environment:
+      - STORAGE_TYPE=mem
+    ports:
+      - "9411:9411"
 
 volumes:
   redis-data:
