@@ -1,5 +1,5 @@
 ### JWT 발급
-POST http://localhost:8080/login
+POST http://localhost:8001/login
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 > {% client.global.set("authToken", response.body.token); %}
 
 ### JWT 발급 (ADMIN)
-POST http://localhost:8080/login
+POST http://localhost:8001/login
 Content-Type: application/json
 
 {
@@ -20,13 +20,14 @@ Content-Type: application/json
 
 > {% client.global.set("authToken", response.body.token); %}
 
+
 ### PAYMENT 서비스
-GET http://localhost:8080/payments/1
+GET http://localhost:8001/payments/1
 Authorization: Bearer {{authToken}}
 
 ### BOOK 서비스 (with userId QueryParams)
-GET http://localhost:8080/books/1?userId=admin
+GET http://localhost:8001/books/1?userId=admin
 Authorization: Bearer {{authToken}}
 
 ###
-GET http://localhost:8080/fastcampus/search/recommended
+GET http://localhost:8001/fastcampus/search/recommended
