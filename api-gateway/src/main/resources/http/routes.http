@@ -1,5 +1,17 @@
+### JWT 발급
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "fast",
+  "password": "campus"
+}
+
+> {% client.global.set("authToken", response.body.token); %}
+
 ### PAYMENT 서비스
 GET http://localhost:8080/payments/1
+Authorization: Bearer {{authToken}}
 
 ### BOOK 서비스
 GET http://localhost:8080/books/1
