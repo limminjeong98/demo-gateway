@@ -1,0 +1,39 @@
+### JWT 발급
+POST http://localhost:8081/login
+Content-Type: application/json
+
+{
+  "username": "fast",
+  "password": "campus"
+}
+
+> {% client.global.set("authToken", response.body.token); %}
+
+
+### JWT 발급 (ADMIN)
+POST http://localhost:8081/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+> {% client.global.set("authToken", response.body.token); %}
+
+### PAYMENT 서비스
+GET http://localhost:8081/payments/1
+Authorization: Bearer {{authToken}}
+
+### BOOK 서비스 (with userId QueryParams)
+GET http://localhost:8081/books/1?userId=admin
+Authorization: Bearer {{authToken}}
+
+### BOOK 서비스
+OPTIONS http://localhost:8081/books/3
+Authorization: Bearer {{authToken}}
+Access-Control-Request-Method: GET
+Origin: https://example.com
+
+###
+GET http://localhost:8081/fastcampus/search/recommended

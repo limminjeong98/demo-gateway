@@ -10,7 +10,7 @@ import java.util.Objects;
 @Configuration
 public class RateLimiterConfig {
 
-    // @Bean
+    @Bean
     public KeyResolver ipKeyResolver() {
         // 요청을 식별하는 데 사용되는 키를 결정하는 역할
         return exchange -> Mono.just(
@@ -20,7 +20,7 @@ public class RateLimiterConfig {
         );
     }
 
-    @Bean
+    // @Bean
     public KeyResolver userIdQueryParamKeyResolver() {
         // 요청을 식별하는 데 사용되는 키를 결정하는 역할
         return exchange -> Mono.just(
