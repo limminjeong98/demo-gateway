@@ -7,9 +7,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Slf4j
+@Component
 public class JwtReactiveAuthenticationManager implements ReactiveAuthenticationManager {
 
     private final ReactiveUserDetailsService userDetailsService;

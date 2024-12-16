@@ -9,6 +9,17 @@ Content-Type: application/json
 
 > {% client.global.set("authToken", response.body.token); %}
 
+### JWT 발급 (ADMIN)
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+> {% client.global.set("authToken", response.body.token); %}
+
 ### PAYMENT 서비스
 GET http://localhost:8080/payments/1
 Authorization: Bearer {{authToken}}
